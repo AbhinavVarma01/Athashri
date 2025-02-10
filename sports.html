@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports at Athashri</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="sports.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Athashri Baner B</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#features">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html" target="_blank">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center py-5">
+        <h1>Sports at Athashri</h1>
+        <p>Promoting Active and Engaging Lifestyle</p>
+    </header>
+
+    <div id="accessibilityToolbar" class="accessibility-toolbar">
+        <button id="increaseTextSize" class="btn btn-primary btn-sm me-2">A+</button>
+        <button id="decreaseTextSize" class="btn btn-primary btn-sm me-2">A-</button>
+        <button id="textToSpeech" class="btn btn-primary btn-sm me-2"><i class="bi bi-volume-up"></i></button>
+        <button id="stopSpeech" class="btn btn-danger btn-sm me-2"><i class="bi bi-stop-circle"></i></button>
+        <button id="voiceCommand" class="btn btn-primary btn-sm"><i class="bi bi-mic"></i></button>
+        <button id="emergencyButton" class="btn btn-danger btn-sm mt-3" title="Call Emergency Number">
+            <i class="bi bi-telephone-forward"></i>
+        </button>
+    </div>
+
+    <main>
+        <section id="features" class="features-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Sports Activities</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-card indoor-games">
+                            <h3>Indoor Games</h3>
+                            <ul class="feature-list">
+                                <li>
+                                    <i class="bi bi-dice-6"></i>
+                                    <strong>Carrom Board:</strong> Strategic indoor game for social interaction
+                                </li>
+                                <li>
+                                    <i class="bi bi-trophy"></i>
+                                    <strong>Chess Tables:</strong> Mental exercise and strategic thinking
+                                </li>
+                                <li>
+                                    <i class="bi bi-suit-spade"></i>
+                                    <strong>Card Games:</strong> Social card games for entertainment
+                                </li>
+                                <li>
+                                    <i class="bi bi-people"></i>
+                                    <strong>Social Area:</strong> Dedicated space for indoor activities
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card outdoor-games">
+                            <h3>Outdoor Activities</h3>
+                            <ul class="feature-list">
+                                <li>
+                                    <i class="bi bi-dribbble"></i>
+                                    <strong>Tennis Court:</strong> Professional court for tennis enthusiasts
+                                </li>
+                                <li>
+                                    <i class="bi bi-bicycle"></i>
+                                    <strong>Walking Track:</strong> Well-maintained track for daily walks
+                                </li>
+                                <li>
+                                    <i class="bi bi-tree"></i>
+                                    <strong>Garden Area:</strong> Peaceful outdoor seating spaces
+                                </li>
+                                <li>
+                                    <i class="bi bi-heart"></i>
+                                    <strong>Fitness Zone:</strong> Light exercise and outdoor engagement
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Sports Gallery</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="chess.jpg" alt="Chess board" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Chess Board Setup</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="tennis.png" alt="Tennis Court" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Tennis Court</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="carroms.avif" alt="Carrom Board" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Carrom Board Setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="contact-card text-center">
+                            <h2 class="mb-4">Join Our Sports Activities</h2>
+                            <address class="mb-4">
+                                <p><i class="bi bi-geo-alt"></i> Athashri Vadodara</p>
+                                <p>Village Sakariya, Near Ghanshyampura Village,</p>
+                                <p>Vaghodia, Off Ajwa Road, Vadodara - 390 019</p>
+                                <p><i class="bi bi-telephone"></i> +91 8239 073 719</p>
+                            </address>
+                            <div class="operating-hours">
+                                <h3 class="h5 mb-3">Activity Schedule</h3>
+                                <p>Indoor Games: Available daily 6 AM - 9 PM</p>
+                                <p>Outdoor Activities: Sunrise to Sunset</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-white py-4" style="background-color: #0d6efd;">
+        <div class="container text-center">
+            <p>&copy; 2024 Athashri Baner Block B. All rights reserved.</p>
+            <div>
+                <a href="#" class="text-white"><i class="bi bi-facebook me-3"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-twitter me-3"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="sports.js"></script>
+</body>
+</html>

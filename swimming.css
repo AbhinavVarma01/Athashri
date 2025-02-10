@@ -1,0 +1,228 @@
+/* Base styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6ea2ef;
+    --text-color: #213547;
+    --bg-light: #f8f9fa;
+    --bg-dark: #242424;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.hero-section {
+    position: relative;
+    background: url("swimming\ main.webp") center/cover;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-section p {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Features Section */
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.feature-list i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* Gallery Section */
+.gallery-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 4/3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(13, 110, 253, 0.9));
+    color: white;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--bg-light);
+}
+
+.contact-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-card h2 {
+    color: var(--primary-color);
+}
+
+.contact-card address p,
+.contact-card .operating-hours p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-card i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Accessibility Toolbar */
+.accessibility-toolbar {
+    position: fixed !important;
+    top: 20%;
+    right: 7px !important;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.accessibility-toolbar button {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility-toolbar button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #0056b3;
+}
+
+.accessibility-toolbar button.active {
+    background-color: #28a745;
+    transform: scale(1.05);
+}
+
+/* Button Specific Colors */
+#increaseTextSize { background-color: var(--primary-color); }
+#decreaseTextSize { background-color: var(--secondary-color); }
+#textToSpeech { background-color: #ffc107; }
+#stopSpeech { background-color: #dc3545; }
+#voiceCommand { background-color: #0dcaf0; }
+#emergencyButton { background-color: #dc3545; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-card {
+        padding: 1.5rem;
+    }
+    
+    .accessibility-toolbar {
+        right: 5px !important;
+    }
+    
+    .accessibility-toolbar button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}

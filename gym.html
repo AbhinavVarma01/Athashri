@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym at Athashri</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            position: relative;
+            background: url("main.jpeg") center/cover;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 1);
+            z-index: -1;
+        }
+
+
+
+        /* Features Section */
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #0d6efd;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .feature-list i {
+            color: #0d6efd;
+            font-size: 1.2rem;
+        }
+
+        /* Gallery Section */
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(13, 110, 253, 0.9));
+            color: white;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            text-align: center;
+        }
+
+        .contact-section {
+            background-color: #f8f9fa;
+            /* Optional: Light background for contrast */
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-card h2 {
+            color: #0d6efd;
+        }
+
+        .contact-card address p,
+        .contact-card .operating-hours p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card i {
+            color: #0d6efd;
+            margin-right: 0.5rem;
+        }
+
+        .accessibility-toolbar {
+            position: fixed !important;
+            /* Keep the toolbar fixed in place */
+            top: 20%;
+            /* Vertically center the toolbar */
+            right: 7px !important;
+            /* 20px from the right edge */
+            z-index: 1000;
+            /* Ensure the toolbar is above other content */
+            display: flex;
+            /* Align buttons horizontally */
+            flex-direction: column;
+            /* Arrange buttons vertically */
+            gap: 12px;
+            /* Space between buttons */
+            animation: slideIn 0.5s ease-out;
+            /* Animation for toolbar appearance */
+        }
+
+        /* Animation for toolbar appearance */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                /* Start off-screen */
+            }
+
+            to {
+                transform: translateX(0);
+                /* Slide into view */
+            }
+        }
+
+        /* Button Styles */
+        .accessibility-toolbar button {
+            width: 50px;
+            /* Consistent button width */
+            height: 50px;
+            /* Consistent button height */
+            background-color: #007bff;
+            /* Default Blue background for buttons */
+            color: #fff;
+            /* White text or icons */
+            border: none;
+            border-radius: 50%;
+            /* Circular buttons */
+            cursor: pointer;
+            font-size: 18px;
+            /* Font size for text/icon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            /* Smooth transition for hover and click effects */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Add shadow to buttons */
+        }
+
+        /* Hover Effects */
+        .accessibility-toolbar button:hover {
+            transform: scale(1.1);
+            /* Slightly increase button size on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Enhanced shadow effect */
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+
+        /* Active State (when clicked) */
+        .accessibility-toolbar button.active {
+            background-color: #28a745;
+            /* Green color for active state */
+            transform: scale(1.05);
+            /* Slightly enlarge active button */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            /* Stronger shadow when active */
+        }
+
+        /* Button Specific Colors */
+        #increaseTextSize {
+            background-color: #0d6efd;
+            /* A+ Button - Blue */
+        }
+
+        #decreaseTextSize {
+            background-color: #6ea2ef;
+            /* A- Button - Light Blue */
+        }
+
+        #textToSpeech {
+            background-color: #ffc107;
+            /* Text-to-Speech Button - Yellow */
+        }
+
+        #stopSpeech {
+            background-color: #dc3545;
+            /* Stop Button - Red */
+        }
+
+        #voiceCommand {
+            background-color: #0dcaf0;
+            /* Voice Command Button - Cyan */
+        }
+
+        /* Button Icons */
+        .accessibility-toolbar i {
+            font-size: 20px;
+            /* Icon size */
+            transition: transform 0.3s ease;
+            /* Icon transition for hover effect */
+        }
+
+        /* Icon Hover Effect */
+        .accessibility-toolbar button:hover i {
+            transform: rotate(20deg);
+        }
+
+
+
+        /* Modal styles */
+        .modal-content {
+            background: transparent;
+            border: none;
+        }
+
+        .modal-body {
+            padding: 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                margin-bottom: 1rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Athashri Baner B</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html" target="_blank">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center py-5">
+        <h1>Welcome to the Gym at Athashri</h1>
+        <p>Where Fitness Meets Community</p>
+    </header>
+    <div id="accessibilityToolbar" class="accessibility-toolbar">
+        <button id="increaseTextSize" class="btn btn-primary btn-sm me-2">A+</button>
+        <button id="decreaseTextSize" class="btn btn-primary btn-sm me-2">A-</button>
+        <button id="textToSpeech" class="btn btn-primary btn-sm me-2"><i class="bi bi-volume-up"></i></button>
+        <button id="stopSpeech" class="btn btn-danger btn-sm me-2"><i class="bi bi-stop-circle"></i></button>
+        <button id="voiceCommand" class="btn btn-primary btn-sm"><i class="bi bi-mic"></i></button>
+        <button id="emergencyButton" class="btn btn-danger btn-sm mt-3" title="Call Emergency Number">
+            <i class="bi bi-telephone-forward"></i>
+    </div>
+    <main>
+        <section id="features" class="features-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Our Facilities & Guidelines</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="feature-card equipment">
+                            <h3>Equipment & Facilities</h3>
+                            <ul class="feature-list">
+                                <li>
+                                    <i class="bi bi-heart-pulse"></i>
+                                    <strong>Cardio Zone:</strong> Modern treadmills and stationary bikes
+                                </li>
+                                <li>
+                                    <i class="bi bi-lightning"></i>
+                                    <strong>Strength Training:</strong> Comprehensive dumbbell collection
+                                </li>
+                                <li>
+                                    <i class="bi bi-grid"></i>
+                                    <strong>Functional Area:</strong> Yoga mats, medicine balls, stretching space
+                                </li>
+                                <li>
+                                    <i class="bi bi-shield-check"></i>
+                                    <strong>Safety First:</strong> First aid station and emergency contacts
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="feature-card rules">
+                            <h3>Rules & Policies</h3>
+                            <ul class="feature-list">
+                                <li>
+                                    <i class="bi bi-clock"></i>
+                                    <strong>Hours:</strong> Open 6:00 AM - 9:00 PM daily
+                                </li>
+                                <li>
+                                    <i class="bi bi-people"></i>
+                                    <strong>Guest Policy:</strong> Members may bring one guest per visit
+                                </li>
+                                <li>
+                                    <i class="bi bi-hourglass-split"></i>
+                                    <strong>Peak Hours:</strong> 30-minute equipment limit during 6-8 PM
+                                </li>
+                                <li>
+                                    <i class="bi bi-volume-down"></i>
+                                    <strong>Noise Control:</strong> Use headphones, maintain low conversation volume
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Explore Our Facility</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image1.png" alt="Modern Cardio Equipment" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Weight Training</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image2.png" alt="Weight Training Area" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Cardio Zone</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image3.jpg" alt="Yoga and Stretching Area" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Yoga Space</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image4.png" alt="Personal Training Session" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Workout
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image5.png" alt="Functional Training Area" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Functional Training</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="gallery-item" onclick="showImage(this)">
+                            <img src="image6.png" alt="Recovery and Stretching Zone" class="img-fluid rounded shadow">
+                            <div class="overlay">
+                                <span>Personal Training</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="contact-card text-center">
+                            <h2 class="mb-4">Visit Us Today</h2>
+                            <address class="mb-4">
+                                <p><i class="bi bi-geo-alt"></i> Athashri Vadodara</p>
+                                <p>Village Sakariya, Near Ghanshyampura Village,</p>
+                                <p>Vaghodia, Off Ajwa Road, Vadodara - 390 019</p>
+                                <p><i class="bi bi-telephone"></i> +91 8239 073 719</p>
+                            </address>
+                            <div class="operating-hours">
+                                <h3 class="h5 mb-3">Operating Hours</h3>
+                                <p>Monday - Sunday: 6:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-white py-4" style="background-color: #0d6efd;">
+        <div class="container text-center">
+            <p>&copy; 2024 Athashri Baner Block B. All rights reserved.</p>
+            <div>
+                <a href="#" class="text-white"><i class="bi bi-facebook me-3"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-twitter me-3"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        
+            // Enhanced Gallery image modal
+            function showImage(element) {
+                const img = element.querySelector('img');
+                const caption = element.querySelector('.overlay span').textContent;
+                const modal = document.createElement('div');
+                modal.className = 'modal fade';
+                modal.innerHTML = `
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img src="${img.src.replace('w=500', 'w=1200')}" class="img-fluid" alt="${img.alt}">
+                                <div class="overlay" style="opacity: 1">
+                                    <span>${caption}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                const modalInstance = new bootstrap.Modal(modal);
+                modalInstance.show();
+                modal.addEventListener('hidden.bs.modal', function () {
+                    modal.remove();
+                });
+            }
+        
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+        
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+        
+            document.querySelectorAll('.feature-card, .gallery-item, .contact-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        
+            // Dark Mode Toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('bg-dark');
+                    document.body.classList.toggle('text-white');
+                });
+            }
+        
+            // Back to Top Button
+            const backToTop = document.createElement('button');
+            backToTop.id = 'backToTop';
+            backToTop.innerHTML = '<i class="bi bi-arrow-up"></i>';
+            backToTop.style.display = 'none';
+            backToTop.style.position = 'fixed';
+            backToTop.style.bottom = '20px';
+            backToTop.style.right = '20px';
+            backToTop.style.zIndex = '1000';
+            backToTop.style.backgroundColor = '#007bff';
+            backToTop.style.color = '#fff';
+            backToTop.style.border = 'none';
+            backToTop.style.borderRadius = '50%';
+            backToTop.style.padding = '10px';
+            document.body.appendChild(backToTop);
+            window.onscroll = () => {
+                backToTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+            };
+            backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+            // Counter Animation
+            const counters = document.querySelectorAll('.counter');
+            function animateCounter() {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const increment = target / 50;
+                    const interval = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            counter.innerText = target;
+                            clearInterval(interval);
+                        } else {
+                            counter.innerText = Math.ceil(count);
+                        }
+                    }, 20);
+                });
+            }
+            window.addEventListener('scroll', () => {
+                counters.forEach(counter => {
+                    const rect = counter.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                        animateCounter();
+                    }
+                });
+            });
+        
+            // Text Resizing
+            let currentFontSize = 18;
+            const body = document.body;
+            const increaseTextSize = document.getElementById('increaseTextSize');
+            const decreaseTextSize = document.getElementById('decreaseTextSize');
+            if (increaseTextSize && decreaseTextSize) {
+                increaseTextSize.addEventListener('click', () => {
+                    currentFontSize += 2;
+                    body.style.fontSize = currentFontSize + 'px';
+                });
+                decreaseTextSize.addEventListener('click', () => {
+                    currentFontSize = Math.max(12, currentFontSize - 2);
+                    body.style.fontSize = currentFontSize + 'px';
+                });
+            }
+        
+            // Text-to-Speech
+            const textToSpeechButton = document.getElementById('textToSpeech');
+            const stopSpeechButton = document.getElementById('stopSpeech');
+            if (textToSpeechButton && stopSpeechButton) {
+                textToSpeechButton.addEventListener('click', () => {
+                    const utterance = new SpeechSynthesisUtterance(document.body.innerText);
+                    utterance.lang = 'en-US';
+                    speechSynthesis.speak(utterance);
+                });
+                stopSpeechButton.addEventListener('click', () => {
+                    if (speechSynthesis.speaking) {
+                        speechSynthesis.cancel();
+                    }
+                });
+            }
+        
+            // Emergency Button
+            const emergencyButton = document.getElementById('emergencyButton');
+            if (emergencyButton) {
+                emergencyButton.addEventListener('click', function () {
+                    const emergencyNumber = "+917989841960";
+                    window.location.href = `tel:${emergencyNumber}`;
+                });
+            }
+        });
+        </script>        
+</body>
+
+</html>
